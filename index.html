@@ -17,7 +17,7 @@
 </main>
 <script type="module">
 // Remplacez ces valeurs par la configuration de votre projet Firebase.
-const firebaseConfig={apiKey:"VOTRE_API_KEY",authDomain:"VOTRE_PROJET.firebaseapp.com",databaseURL:"https://VOTRE_PROJET-default-rtdb.firebaseio.com",projectId:"VOTRE_PROJET",appId:"VOTRE_APP_ID"};
+const firebaseConfig={apiKey:"AIzaSyAzbjgbwQhULSDukL5yStgy6iUe8xGM",authDomain:"nuage-voyage-tourisme.firebaseapp.com",databaseURL:"https://nuage-voyage-tourisme-default-rtdb.firebaseio.com",projectId:"nuage-voyage-tourisme",appId:"1:501928285936:web:4ebb38664cdd674c0b9435"};
 const configured=!Object.values(firebaseConfig).some(v=>String(v).startsWith("VOTRE_"));
 const q=new URLSearchParams(location.search), isTeacher=q.has("teacher"), sid=q.get("session");
 const $=id=>document.getElementById(id), show=id=>$(id).classList.remove("hidden");
