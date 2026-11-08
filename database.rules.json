@@ -1,0 +1,21 @@
+{
+  "rules": {
+    ".read": false,
+    ".write": false,
+    "sessions": {
+      "$sessionId": {
+        ".read": "auth != null && (data.child('status').val() == 'active' || data.child('owner').val() == auth.uid)",
+        ".write": "auth != null && ((!data.exists() && newData.child('owner').val() == auth.uid && newData.child('status').val() == 'active') || (data.child('owner').val() == auth.uid && newData.child('owner').val() == auth.uid && newData.child('status').val() == 'closed'))",
+        "responses": {
+          "$responseId": {
+            ".write": "auth != null && root.child('sessions').child($sessionId).child('status').val() == 'active' && !data.exists() && newData.hasChildren(['word','createdAt'])",
+            ".validate": "newData.hasChildren(['word','createdAt'])",
+            "word": { ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 60" },
+            "createdAt": { ".validate": "newData.isNumber()" },
+            "$other": { ".validate": false }
+          }
+        }
+      }
+    }
+  }
+}
